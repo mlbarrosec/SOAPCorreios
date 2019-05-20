@@ -1,0 +1,40 @@
+<%- contentFor('body') %>
+
+<div class="row">
+    <div class="col-md-12">
+        <br>
+        <h1>Calcular Prazo de Entrega.</h1>                     
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">       
+        
+        <form action="/calcula-prazo" method="POST">
+
+            <label for="nCdServico"><b>Tipo de serviço:</b></label>
+            <select required type="select" class="form-control" name="nCdServico">
+                <option value="40010">Sedex Varejo</option>
+                <option value="40045">SEDEX a Cobrar Varejo</option>                    
+                <option value="40215">SEDEX 10 Varejo</option>
+                <option value="40290">SEDEX Hoje Varejo</option>
+                <option value="41106">PAC Varejo</option>
+            </select>
+            <br>
+            <label for="sCepOrigem"><b>Origem:</b></label>
+            <input required type="text" name="sCepOrigem" class="form-control" placeholder="Informe o CEP">
+            <br>
+            <label for="sCepDestino"><b>Destino:</b></label>
+            <input required type="text" name="sCepDestino" class="form-control" placeholder="Informe o CEP">
+            <br>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    
+    </div>
+    <div class="col-md-6">
+        <div class="text-center">
+                <img width="500px" src="https://http2.mlstatic.com/modulo-correios-para-opencart-todas-as-versoes-D_NQ_NP_764447-MLB27327228316_052018-F.jpg" alt="">
+        </div>
+    </div>
+    
+</div>

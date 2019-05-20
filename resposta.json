@@ -1,0 +1,16 @@
+{"CalcPrazoResult":
+    {"Servicos":
+        {"cServico":
+            [{
+                "Codigo":40010,
+                "PrazoEntrega":"3",
+                "EntregaDomiciliar":"S",
+                "EntregaSabado":"S",
+                "Erro":"",
+                "MsgErro":"",
+                "obsFim":"",
+                "DataMaxEntrega":"23/05/2019"
+            }]
+        }
+    }
+}

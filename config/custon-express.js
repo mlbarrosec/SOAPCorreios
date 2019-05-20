@@ -15,6 +15,7 @@ module.exports = function (){
 
     consign()
         .include('controllers')
+        .then('services')
         .into(app);
     return app;
 }
