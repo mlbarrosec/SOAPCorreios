@@ -11,5 +11,5 @@ Esse sistema tem o objetivo de fazer requisições SOAP no serviços dos correio
     "nodemon": "^1.19.0",<br>
     "soap": "^0.27.1"<br>
 
-# URL para utilização da aplicação dos correios
-http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?wsdl
+# URL para utilização dos serviços dos correios
+http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx
