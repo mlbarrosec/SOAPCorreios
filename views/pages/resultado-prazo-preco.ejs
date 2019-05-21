@@ -1,0 +1,34 @@
+<%- contentFor('body') %>
+<br>
+<div class="row">
+        <br>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">            
+            <h1>Prazo de Entrega e Valor</h1>
+            <%if (prazoPreco.erro == 0) { %>             
+                <p><b>Código: </b> <%- prazoPreco.codigo %></p>
+                <p><b>Valor: </b>R$ <%- prazoPreco.valor %></p>
+                <p><b>Prazo: </b><%- prazoPreco.prazo %> dias</p>
+                <p><b>Mão própria:</b> R$ <%- prazoPreco.maoPropria %></p>
+                <p><b>Aviso recebimento: </b>R$ <%- prazoPreco.avisoRecebimento %></p>
+                <p><b>Valor declarado: </b>R$ <%- prazoPreco.valorDeclarado %></p> 
+                <p><b>Entrega domiciliar: </b><%- prazoPreco.entregaDomiciliar %></p> 
+                <p><b>Entrega Sábado: </b><%- prazoPreco.entregaSabado %></p>
+            <% }else { %>
+                <p><b>Erro: </b><%- prazoPreco.msgErro %></p>
+            <% } %> 
+            <br>            
+        </div>
+
+        <div class="col-md-4">
+            <div class="card card-body bg-light">                
+                <h1>Códigos:</h1>
+                <p><b>40010: </b>SEDEX Varejo</p>
+                <p><b>40045: </b>SEDEX a Cobrar Varejo</p>
+                <p><b>40215: </b>SEDEX 10 Varejo</p>
+                <p><b>40290: </b>SEDEX Hoje Varejo</p>
+                <p><b>41106: </b>PAC Varejo</p>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+</div>

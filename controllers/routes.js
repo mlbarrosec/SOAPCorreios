@@ -45,7 +45,9 @@ module.exports = function (app) {
                     'prazoEntrega': resultado.CalcPrazoResult.Servicos.cServico[0].PrazoEntrega,
                     'entregaDomiciliar': resultado.CalcPrazoResult.Servicos.cServico[0].EntregaDomiciliar,
                     'entregaSabado': resultado.CalcPrazoResult.Servicos.cServico[0].EntregaSabado,
-                    'dataMaxEntrega': resultado.CalcPrazoResult.Servicos.cServico[0].DataMaxEntrega
+                    'dataMaxEntrega': resultado.CalcPrazoResult.Servicos.cServico[0].DataMaxEntrega,
+                    'erro': resultado.CalcPrazoResult.Servicos.cServico[0].Erro,
+                    'msgErro': resultado.CalcPrazoResult.Servicos.cServico[0].MsgErro,
                 };
             
             //manda renderizar a página EJS, e passa o array resultadoFinal como segundo parametro.
@@ -58,6 +60,31 @@ module.exports = function (app) {
 
         let dados = req.body;
         let correiosSOAPClient = new app.services.CorreiosSOAPClient();
+
+        correiosSOAPClient.calculaPrecoPrazo(dados, function(erro,resultado){
+            if(erro){
+                res.status(500).send(erro);
+                return;
+            }
+
+            let resultadoFinal = {
+                'codigo': resultado.CalcPrecoPrazoResult.Servicos.cServico[0].Codigo,
+                'valor': resultado.CalcPrecoPrazoResult.Servicos.cServico[0].Valor,
+                'prazo': resultado.CalcPrecoPrazoResult.Servicos.cServico[0].PrazoEntrega,
+                'maoPropria': resultado.CalcPrecoPrazoResult.Servicos.cServico[0].ValorMaoPropria,
+                'avisoRecebimento': resultado.CalcPrecoPrazoResult.Servicos.cServico[0].ValorAvisoRecebimento,
+                'valorDeclarado': resultado.CalcPrecoPrazoResult.Servicos.cServico[0].ValorValorDeclarado,
+                'entregaDomiciliar': resultado.CalcPrecoPrazoResult.Servicos.cServico[0].EntregaDomiciliar,
+                'entregaSabado': resultado.CalcPrecoPrazoResult.Servicos.cServico[0].EntregaSabado,
+                'erro': resultado.CalcPrecoPrazoResult.Servicos.cServico[0].Erro,
+                'msgErro': resultado.CalcPrecoPrazoResult.Servicos.cServico[0].MsgErro
+            }
+
+            res.render('pages/resultado-prazo-preco', {prazoPreco : resultadoFinal} );
+            
+           //res.json(resultado);
+
+        });
 
     });
 

@@ -2,17 +2,22 @@
 <br>
 <div class="row">
         <br>
-        <div class="col-md-6">            
-            <h1>Prazo de Entrega</h1>            
-            <p><b>Código:</b> <%- prazo.codigo %></p>
-            <p><b>Prazo de Entrega:</b> <%- prazo.prazoEntrega %> Dias</p>
-            <p><b>Entrega Domiciliar:</b> <%- prazo.entregaDomiciliar %></p>
-            <p><b>Entrega no Sábado:</b> <%- prazo.entregaSabado %></p>
-            <p><b>Data Máxima de Entrega:</b> <%- prazo.dataMaxEntrega %></p>            
-            <br>            
+        <div class="col-md-1"></div>
+        <div class="col-md-5">            
+            <h1>Prazo de Entrega</h1>
+            <%if (prazo.erro == 0) { %>            
+                <p><b>Código:</b> <%- prazo.codigo %></p>
+                <p><b>Prazo de Entrega:</b> <%- prazo.prazoEntrega %> Dias</p>
+                <p><b>Entrega Domiciliar:</b> <%- prazo.entregaDomiciliar %></p>
+                <p><b>Entrega no Sábado:</b> <%- prazo.entregaSabado %></p>
+                <p><b>Data Máxima de Entrega:</b> <%- prazo.dataMaxEntrega %></p>            
+                <br>
+            <% }else { %>
+                <p><b>Erro: </b><%- prazo.msgErro %></p>            
+            <% } %> 
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="card card-body bg-light">                
                 <h1>Códigos:</h1>
                 <p><b>40010: </b>SEDEX Varejo</p>
@@ -22,4 +27,6 @@
                 <p><b>41106: </b>PAC Varejo</p>
             </div>
         </div>
+
+        <div class="col-md-2"></div>
 </div>

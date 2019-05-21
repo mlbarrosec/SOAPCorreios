@@ -24,6 +24,16 @@ class CorreiosSOAPClient {
         });
     }
 
+    calculaPrecoPrazo(args, callback) {
+        soap.createClient(this._url, function(error,cliente){
+            if(error){
+                console.log(error);
+                return;
+            }
+            cliente.CalcPrecoPrazo(args,callback);
+        });
+    }
+
 }
 
 //Exporta as funçoes para serem utilizadas em outras classes
