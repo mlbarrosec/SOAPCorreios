@@ -17,11 +17,10 @@ module.exports = function (app) {
         res.render('pages/calcula-prazo-preco');
     });
 
-    //Rota para renderizar a página de resultados do calculo do prazo, utilizando EJS
-    app.get('/resultado-prazo',(req,res) => {
-        res.render('pages/resultado-prazo');
-    })
-
+    //Rota para renderizar página de calculo do preco
+    app.get('/calcula-preco', (req,res) => {
+        res.render('pages/calcula-preco'); 
+    });
     
 
     app.post('/calcula-prazo',function(req,res){
@@ -54,7 +53,7 @@ module.exports = function (app) {
             res.render('pages/resultado-prazo',{ prazo: resultadoFinal });
         });
         
-    })
+    });
 
     app.post('/calcula-prazo-preco', (req,res) => {
 
@@ -86,6 +85,31 @@ module.exports = function (app) {
 
         });
 
+    });
+
+    app.post('/calcula-preco',(req,res) =>{
+        let dados = req.body;
+        let correiosSOAPClient = new app.services.CorreiosSOAPClient;
+
+        correiosSOAPClient.calculaPreco(dados,function(erro,resultado){
+            if(erro) {
+                res.status(500).send(erro);
+                return;
+            }
+
+            let resultadoFinal = {
+                'codigo': resultado.CalcPrecoResult.Servicos.cServico[0].Codigo,
+                'valor': resultado.CalcPrecoResult.Servicos.cServico[0].Valor,
+                'valorMaoPropria': resultado.CalcPrecoResult.Servicos.cServico[0].ValorMaoPropria,
+                'valorAvisoRecebimento' : resultado.CalcPrecoResult.Servicos.cServico[0].ValorAvisoRecebimento,
+                'valorDeclarado': resultado.CalcPrecoResult.Servicos.cServico[0].ValorValorDeclarado,
+                'erro': resultado.CalcPrecoResult.Servicos.cServico[0].Erro,
+                'msgErro': resultado.CalcPrecoResult.Servicos.cServico[0].MsgErro
+            }
+
+            res.render('pages/resultado-preco', {preco: resultadoFinal});
+            //res.json(resultado);
+        });
     });
 
 

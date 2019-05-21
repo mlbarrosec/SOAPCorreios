@@ -34,6 +34,16 @@ class CorreiosSOAPClient {
         });
     }
 
+    calculaPreco(args, callback) {
+        soap.createClient(this._url, function (erro,cliente){
+            if(erro) {
+                console.log(erro);
+                return;
+            }
+            cliente.CalcPreco(args,callback);
+        });
+    }
+
 }
 
 //Exporta as funçoes para serem utilizadas em outras classes

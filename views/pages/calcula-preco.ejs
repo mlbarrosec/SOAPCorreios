@@ -1,0 +1,92 @@
+<%- contentFor('body') %>
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">       
+        <br>
+        <h1>Calcular Preço.</h1>
+        <form action="/calcula-preco" method="POST">
+
+            <input type="hidden" name="nCdEmpresa" value="">
+            <input type="hidden" name="sDsSenha" value="">
+
+            <label for="nCdServico"><b>Tipo de serviço:</b></label>
+            <select required class="form-control" name="nCdServico">
+                <option value="">Selecione</option>
+                <option value="40010">Sedex Varejo</option>
+                <option value="40045">SEDEX a Cobrar Varejo</option>                    
+                <option value="40215">SEDEX 10 Varejo</option>
+                <option value="40290">SEDEX Hoje Varejo</option>
+                <option value="41106">PAC Varejo</option>
+            </select>
+            
+            <br>
+            <label for="sCepOrigem"><b>Origem:</b></label>
+            <input required type="text" name="sCepOrigem" class="form-control" placeholder="Informe o CEP">
+           
+            <br>
+            <label for="sCepDestino"><b>Destino:</b></label>
+            <input required type="text" name="sCepDestino" class="form-control" placeholder="Informe o CEP">
+            <br>
+
+            <label for="nVlPeso"><b>Peso:</b></label>
+            <input required type="text" name="nVlPeso" class="form-control" placeholder="Informe o peso em Kg">
+            <br>
+            
+            <label for="nCdFormato"><b>Formato:</b></label>
+            <select required  name="nCdFormato" class="form-control">
+                <option value="">Selecione</option>
+                <option value="1">1 – Formato caixa/pacote</option>
+                <option value="2">2 – Formato rolo/prisma</option>
+                <option value="3">3 - Envelope</option>
+            </select>
+            <br>
+
+            <label for="nVlComprimento"><b>Comprimento:</b></label>
+            <input required type="number" name="nVlComprimento" class="form-control" placeholder="Informe o comprimento, em Cm">
+            <br>
+
+            <label for="nVlAltura"><b>Altura:</b></label>
+            <input required type="number" name="nVlAltura" class="form-control" placeholder="Informe a altura em, Cm">
+            <br>
+
+            <label for="nVlLargura"><b>Largura:</b></label>
+            <input required type="number" name="nVlLargura" class="form-control" placeholder="Informe a largura, em Cm">
+            <br>
+
+            <label for="nVlDiametro"><b>Diametro:</b></label>
+            <input required type="numer" name="nVlDiametro" class="form-control" placeholder="Informe o diametro, em Cm">
+            <br>
+
+            <label for="sCdMaoPropria"><b>Mão Própria:</b></label>
+            <select required name="sCdMaoPropria" class="form-control">
+                <option value="">Selecione</option>
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+            <br>
+
+            <label for="nVlValorDeclarado"><b>Valor declarado:</b></label>
+            <input required type="number" name="nVlValorDeclarado" class="form-control" placeholder="Informe o valor da mercadoria, em Reais">
+            <br>
+
+            <label for="sCdAvisoRecebimento"><b>Aviso de recebimento:</b></label>
+            <select required name="sCdAvisoRecebimento" class="form-control">
+                <option value="">Selecione</option>
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+            <br>
+
+            <button type="submit" class="btn btn-primary">Calcular preço</button>
+        </form>
+    
+    </div>
+    <div class="col-md-6">
+        <br>
+        <div class="text-center">
+                <img width="500px" src="https://http2.mlstatic.com/modulo-correios-para-opencart-todas-as-versoes-D_NQ_NP_764447-MLB27327228316_052018-F.jpg" alt="">
+        </div>
+    </div>
+    
+</div>
